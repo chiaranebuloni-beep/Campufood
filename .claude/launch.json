@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "landing-campu",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["/tmp/landing-campu/serve.py"],
+      "port": 8080
+    }
+  ]
+}
