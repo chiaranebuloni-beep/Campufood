@@ -1,3 +1,5 @@
-import http.server, os
-os.chdir("/Users/petramereghetti/Desktop/Landing Campù")
-http.server.test(HandlerClass=http.server.SimpleHTTPRequestHandler, port=8080, bind="127.0.0.1")
+import http.server, os, sys
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+port = int(sys.argv[1]) if len(sys.argv) > 1 else 8080
+print(f"Serving on http://127.0.0.1:{port}")
+http.server.test(HandlerClass=http.server.SimpleHTTPRequestHandler, port=port, bind="127.0.0.1")
