@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover"/>
+  <meta name="theme-color" content="#5d0100"/>
+  <meta name="robots" content="noindex,nofollow"/>
+  <meta name="description" content="Grazie per averci contattato — CamPùfood Horeca"/>
+  <link rel="icon" type="image/png" href="assets/campu-logo-yellow.png"/>
+  <title>Grazie — CamPùfood Horeca</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--r:#5d0100;--rm:#7a1200;--y:#fec905;--yc:#ffe44d;--cr:#fbebd8;--tx:#1a0800;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html,body{height:100%;}
+    body{
+      font-family:'Inter',sans-serif;
+      background:var(--r);
+      color:var(--cr);
+      min-height:100vh;
+      min-height:100dvh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:2rem 1.5rem;
+      text-align:center;
+      overflow-x:hidden;
+    }
+    .logo{height:48px;width:auto;margin-bottom:2.4rem;}
+    .check{
+      width:78px;height:78px;border-radius:50%;
+      background:var(--y);
+      display:flex;align-items:center;justify-content:center;
+      margin:0 auto 2rem;
+      box-shadow:0 6px 32px rgba(254,202,5,.22);
+      animation:pop .55s cubic-bezier(.16,1.1,.4,1.05) both;
+    }
+    .check svg{width:38px;height:38px;color:var(--r);}
+    @keyframes pop{
+      0%{transform:scale(.3);opacity:0;}
+      60%{transform:scale(1.08);}
+      100%{transform:scale(1);opacity:1;}
+    }
+    h1{
+      font-family:'CG Times','Times New Roman',Georgia,serif;
+      font-size:clamp(2rem,5.5vw,3.4rem);
+      font-weight:normal;
+      line-height:1.1;
+      color:var(--cr);
+      margin-bottom:1rem;
+      max-width:680px;
+    }
+    h1 em{color:var(--y);font-style:italic;}
+    p{
+      font-size:clamp(.92rem,2.2vw,1.05rem);
+      line-height:1.75;
+      color:rgba(251,235,216,.7);
+      max-width:520px;
+      margin:0 auto 2.4rem;
+      font-weight:300;
+    }
+    .name{color:var(--y);font-weight:500;}
+    .btn-y{
+      background:var(--y);
+      color:var(--r);
+      padding:.95rem 2.1rem;
+      border-radius:1px;
+      font-weight:700;
+      font-size:.82rem;
+      letter-spacing:.07em;
+      text-transform:uppercase;
+      text-decoration:none;
+      display:inline-block;
+      transition:background .2s,transform .15s;
+    }
+    .btn-y:hover{background:var(--yc);transform:translateY(-2px);}
+    .small{
+      margin-top:2.4rem;
+      font-size:.62rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:rgba(251,235,216,.28);
+    }
+    @media (prefers-reduced-motion: reduce){
+      .check{animation:none;}
+    }
+  </style>
+</head>
+<body>
+  <img class="logo" src="assets/campu-logo-yellow.png" alt="CamPùfood"/>
+  <div class="check" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+  </div>
+  <h1>Grazie<span id="namePart"></span>,<br>la tua richiesta è <em>arrivata.</em></h1>
+  <p>Un membro del nostro team ti contatterà a breve per costruire insieme la tua selezione di eccellenze Campani e Pugliesi.</p>
+  <a href="index.html" class="btn-y">Torna alla home</a>
+  <p class="small">CamPùfood · Selezionatori di eccellenze</p>
+
+  <script>
+    try{
+      const raw=sessionStorage.getItem('campufood_lead');
+      if(raw){
+        const d=JSON.parse(raw);
+        if(d && d.nome){
+          const first=String(d.nome).trim().split(/\s+/)[0];
+          if(first) document.getElementById('namePart').textContent=' '+first;
+        }
+        sessionStorage.removeItem('campufood_lead');
+      }
+    }catch{}
+  </script>
+</body>
+</html>
